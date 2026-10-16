@@ -268,6 +268,8 @@ fun FormBiodataScreen() {
                         color = colorResource(id = R.color.text_primary),
                         modifier = Modifier.fillMaxWidth()
                     )
+
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_small)))
                 }
         }
     }
