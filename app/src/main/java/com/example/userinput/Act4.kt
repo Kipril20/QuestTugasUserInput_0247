@@ -80,5 +80,11 @@ fun FormBiodataScreen() {
                     .padding(
                         bottom = dimensionResource(id = R.dimen.floating_box_bottom_margin)
                     ),
+                shape = RoundedCornerShape(
+                    topStart = dimensionResource(id = R.dimen.corner_large),
+                    topEnd = dimensionResource(id = R.dimen.corner_large),
+                    bottomStart = dimensionResource(id = R.dimen.corner_large),
+                    bottomEnd = dimensionResource(id = R.dimen.corner_large)
+                ),
         }
     }
