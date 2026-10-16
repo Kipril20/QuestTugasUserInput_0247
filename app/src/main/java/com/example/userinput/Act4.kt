@@ -201,6 +201,24 @@ fun FormBiodataScreen() {
                                     tint = colorResource(id = R.color.text_secondary)
                                 )
                             },
+                            shape = fieldShape,
+                            colors = textFieldColors,
+                            modifier = Modifier.weight(1f),
+                            singleLine = true
+                        )
+
+                        Box(modifier = Modifier.weight(1f)) {
+                            OutlinedTextField(
+                                value = experience,
+                                onValueChange = { experience = it },
+                                readOnly = true,
+                                placeholder = {
+                                    Text(
+                                        text = stringResource(id = R.string.hint_experience),
+                                        fontSize = dimensionResource(id = R.dimen.font_size_input).value.sp,
+                                        color = colorResource(id = R.color.gray_text_hint)
+                                    )
+                                },
                 }
         }
     }
