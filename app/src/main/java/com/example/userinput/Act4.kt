@@ -270,6 +270,41 @@ fun FormBiodataScreen() {
                     )
 
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_small)))
+
+                    // Checkboxes Row
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        // Android Checkbox
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.clickable { isAndroidChecked = !isAndroidChecked }
+                        ) {
+                            Checkbox(
+                                checked = isAndroidChecked,
+                                onCheckedChange = { isAndroidChecked = it },
+                                colors = CheckboxDefaults.colors(
+                                    checkedColor = colorResource(id = R.color.checkbox_checked),
+                                    uncheckedColor = colorResource(id = R.color.checkbox_unchecked)
+                                )
+                            )
+                            Text(
+                                text = stringResource(id = R.string.skill_android),
+                                fontSize = dimensionResource(id = R.dimen.font_size_label).value.sp,
+                                color = colorResource(id = R.color.text_primary)
+                            )
+                        }
+
+                        // UI/UX Checkbox
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.clickable { isUiUxChecked = !isUiUxChecked }
+                        ) {
+                            Checkbox(
+                                checked = isUiUxChecked,
+                                onCheckedChang
                 }
         }
     }
