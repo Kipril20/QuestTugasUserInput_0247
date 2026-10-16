@@ -110,7 +110,7 @@ fun FormBiodataScreen() {
         ) {
             // Header Image Background
             Image(
-                painter = painterResource(id = R.drawable.header_bg),
+                painter = painterResource(id = R.drawable.images),
                 contentDescription = stringResource(id = R.string.content_desc_header),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
