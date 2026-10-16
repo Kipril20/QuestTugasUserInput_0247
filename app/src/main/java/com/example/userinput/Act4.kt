@@ -1,6 +1,12 @@
 package com.example.userinput
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,12 +37,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
@@ -47,6 +55,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlin.time.Duration.Companion.seconds
+import kotlinx.coroutines.delay
 
 data class BiodataResult(
     val namaLengkap: String,
@@ -70,6 +80,14 @@ fun FormBiodataScreen() {
     var isWebChecked by remember { mutableStateOf(false) }
 
     var submittedData by remember { mutableStateOf<BiodataResult?>(null) }
+
+    // Coroutine LaunchedEffect to automatically dismiss popup after 5 seconds
+    LaunchedEffect(submittedData) {
+        if (submittedData != null) {
+            delay(5.seconds)
+            submittedData = null
+        }
+    }
 
     val fieldShape = RoundedCornerShape(dimensionResource(id = R.dimen.corner_medium))
     val textFieldColors = OutlinedTextFieldDefaults.colors(
@@ -410,23 +428,44 @@ fun FormBiodataScreen() {
                                 fontWeight = FontWeight.Bold
                             )
                         }
+                    }
+                }
+            }
 
-                        // Display Result Card when data is submitted
-                        submittedData?.let { data ->
-                            Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_large)))
-
-                            Card(
-                                modifier = Modifier.fillMaxWidth(),
-                                shape = RoundedCornerShape(dimensionResource(id = R.dimen.corner_medium)),
-                                colors = CardDefaults.cardColors(
-                                    containerColor = colorResource(id = R.color.screen_background)
-                                )
+            // Floating Preview Overlay in Center of Screen (Disappears in 5s)
+            AnimatedVisibility(
+                visible = submittedData != null,
+                enter = fadeIn() + scaleIn(),
+                exit = fadeOut() + scaleOut()
+            ) {
+                submittedData?.let { data ->
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color.Black.copy(alpha = 0.5f))
+                            .clickable { submittedData = null },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Card(
+                            modifier = Modifier
+                                .fillMaxWidth(0.88f)
+                                .clickable(enabled = false) {}, // Prevent dismiss when tapping card body
+                            shape = RoundedCornerShape(dimensionResource(id = R.dimen.corner_large)),
+                            colors = CardDefaults.cardColors(
+                                containerColor = colorResource(id = R.color.card_background)
+                            ),
+                            elevation = CardDefaults.cardElevation(defaultElevation = 12.dp)
+                        ) {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(dimensionResource(id = R.dimen.card_padding)),
+                                verticalArrangement = Arrangement.spacedBy(10.dp)
                             ) {
-                                Column(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(dimensionResource(id = R.dimen.card_padding)),
-                                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Text(
                                         text = "Hasil Biodata",
@@ -434,18 +473,29 @@ fun FormBiodataScreen() {
                                         fontWeight = FontWeight.Bold,
                                         color = colorResource(id = R.color.purple_title)
                                     )
-
-                                    HorizontalDivider(color = colorResource(id = R.color.gray_border))
-
-                                    ResultRow(label = "Nama Lengkap", value = data.namaLengkap)
-                                    ResultRow(label = "Email", value = data.email)
-                                    ResultRow(label = "Tanggal Lahir", value = data.tglLahir)
-                                    ResultRow(label = "Experience", value = data.experience)
-                                    ResultRow(
-                                        label = "Skill",
-                                        value = if (data.skills.isNotEmpty()) data.skills.joinToString(", ") else "-"
-                                    )
+                                    IconButton(
+                                        onClick = { submittedData = null },
+                                        modifier = Modifier.height(28.dp)
+                                    ) {
+                                        Text(
+                                            text = "✕",
+                                            fontSize = 18.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = colorResource(id = R.color.text_secondary)
+                                        )
+                                    }
                                 }
+
+                                HorizontalDivider(color = colorResource(id = R.color.gray_border))
+
+                                ResultRow(label = "Nama Lengkap", value = data.namaLengkap)
+                                ResultRow(label = "Email", value = data.email)
+                                ResultRow(label = "Tanggal Lahir", value = data.tglLahir)
+                                ResultRow(label = "Experience", value = data.experience)
+                                ResultRow(
+                                    label = "Skill",
+                                    value = if (data.skills.isNotEmpty()) data.skills.joinToString(", ") else "-"
+                                )
                             }
                         }
                     }
