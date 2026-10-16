@@ -6,6 +6,7 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 
 @Composable
@@ -22,5 +23,12 @@ fun FormBiodataScreen() {
     var isWebChecked by remember { mutableStateOf(false) }
 
     val fieldShape = RoundedCornerShape(dimensionResource(id = R.dimen.corner_medium))
-    val textFieldColors = OutlinedTextFieldDefaults.colors()
+    val textFieldColors = OutlinedTextFieldDefaults.colors(
+        focusedBorderColor = colorResource(id = R.color.gray_focused_border),
+        unfocusedBorderColor = colorResource(id = R.color.gray_border),
+        focusedContainerColor = colorResource(id = R.color.white),
+        unfocusedContainerColor = colorResource(id = R.color.white),
+        focusedTextColor = colorResource(id = R.color.text_primary),
+        unfocusedTextColor = colorResource(id = R.color.text_primary)
+    )
 }
