@@ -1,7 +1,10 @@
 package com.example.userinput
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.OutlinedTextField
@@ -11,8 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun FormBiodataScreen() {
@@ -45,4 +51,15 @@ fun FormBiodataScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-}
+}       ) {
+        // Header Image Background
+        Image(
+            painter = painterResource(id = R.drawable.header_bg),
+            contentDescription = stringResource(id = R.string.content_desc_header),
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(dimensionResource(id = R.dimen.header_height))
+        )
+
+    }
