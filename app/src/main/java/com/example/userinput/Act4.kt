@@ -258,6 +258,16 @@ fun FormBiodataScreen() {
                         }
                     }
 
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_extra_large)))
+
+                    // Pilih Skill Anda Label
+                    Text(
+                        text = stringResource(id = R.string.label_pilih_skill),
+                        fontSize = dimensionResource(id = R.dimen.font_size_label).value.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = colorResource(id = R.color.text_primary),
+                        modifier = Modifier.fillMaxWidth()
+                    )
                 }
         }
     }
