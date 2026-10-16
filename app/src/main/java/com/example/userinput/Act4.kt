@@ -133,6 +133,11 @@ fun FormBiodataScreen() {
                                     color = colorResource(id = R.color.gray_text_hint)
                                 )
                             },
+                            shape = fieldShape,
+                            colors = textFieldColors,
+                            modifier = Modifier.weight(1f),
+                            singleLine = true
+                        )
             }
         }
     }
