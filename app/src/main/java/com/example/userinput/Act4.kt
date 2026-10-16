@@ -88,6 +88,12 @@ fun FormBiodataScreen() {
                 ),
                 color = colorResource(id = R.color.card_background),
                 shadowElevation = dimensionResource(id = R.dimen.elevation_medium)
-            ){}
+            ){
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(dimensionResource(id = R.dimen.card_padding)),
+                    horizontalAlignment = Alignment.CenterHorizontally
+            }
         }
     }
