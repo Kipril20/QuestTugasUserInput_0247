@@ -174,6 +174,9 @@ fun FormBiodataScreen() {
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true
                     )
+
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_medium)))
+
                 }
         }
     }
