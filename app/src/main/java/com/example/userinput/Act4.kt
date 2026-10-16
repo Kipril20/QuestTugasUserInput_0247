@@ -86,5 +86,8 @@ fun FormBiodataScreen() {
                     bottomStart = dimensionResource(id = R.dimen.corner_large),
                     bottomEnd = dimensionResource(id = R.dimen.corner_large)
                 ),
+                color = colorResource(id = R.color.card_background),
+                shadowElevation = dimensionResource(id = R.dimen.elevation_medium)
+            ){}
         }
     }
