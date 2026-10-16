@@ -4,4 +4,11 @@
     <dimen name="floating_box_top_padding">200dp</dimen>
     <dimen name="floating_box_horizontal_margin">16dp</dimen>
     <dimen name="floating_box_bottom_margin">24dp</dimen>
+
+    <dimen name="card_padding">24dp</dimen>
+    <dimen name="corner_large">32dp</dimen>
+    <dimen name="corner_medium">16dp</dimen>
+    <dimen name="corner_button">16dp</dimen>
+    <dimen name="elevation_medium">8dp</dimen>
+    <dimen name="border_width">1dp</dimen>
 </resources>
