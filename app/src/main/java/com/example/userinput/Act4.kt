@@ -158,6 +158,22 @@ fun FormBiodataScreen() {
 
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_medium)))
 
+                    // Row 2: Email
+                    OutlinedTextField(
+                        value = email,
+                        onValueChange = { email = it },
+                        placeholder = {
+                            Text(
+                                text = stringResource(id = R.string.hint_email),
+                                fontSize = dimensionResource(id = R.dimen.font_size_input).value.sp,
+                                color = colorResource(id = R.color.gray_text_hint)
+                            )
+                        },
+                        shape = fieldShape,
+                        colors = textFieldColors,
+                        modifier = Modifier.fillMaxWidth(),
+                        singleLine = true
+                    )
                 }
         }
     }
