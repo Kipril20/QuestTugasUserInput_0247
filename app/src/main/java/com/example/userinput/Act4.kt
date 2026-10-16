@@ -105,6 +105,14 @@ fun FormBiodataScreen() {
                     )
 
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_small)))
+
+                    // Subtitle
+                    Text(
+                        text = stringResource(id = R.string.form_subtitle),
+                        fontSize = dimensionResource(id = R.dimen.font_size_subtitle).value.sp,
+                        color = colorResource(id = R.color.gray_subtitle),
+                        textAlign = TextAlign.Center
+                    )
             }
         }
     }
