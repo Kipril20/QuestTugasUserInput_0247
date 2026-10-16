@@ -94,6 +94,15 @@ fun FormBiodataScreen() {
                         .fillMaxWidth()
                         .padding(dimensionResource(id = R.dimen.card_padding)),
                     horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    // Title
+                    Text(
+                        text = stringResource(id = R.string.form_title),
+                        fontSize = dimensionResource(id = R.dimen.font_size_title).value.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = colorResource(id = R.color.purple_title),
+                        textAlign = TextAlign.Center
+                    )
             }
         }
     }
