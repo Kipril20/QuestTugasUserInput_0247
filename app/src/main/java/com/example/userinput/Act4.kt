@@ -228,6 +228,36 @@ fun FormBiodataScreen() {
                                         )
                                     }
                                 },
+                                shape = fieldShape,
+                                colors = textFieldColors,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable { isExpExpanded = true },
+                                singleLine = true
+                            )
+
+                            DropdownMenu(
+                                expanded = isExpExpanded,
+                                onDismissRequest = { isExpExpanded = false }
+                            ) {
+                                val expOptions = listOf(
+                                    stringResource(id = R.string.exp_beginner),
+                                    stringResource(id = R.string.exp_intermediate),
+                                    stringResource(id = R.string.exp_advanced)
+                                )
+                                expOptions.forEach { option ->
+                                    DropdownMenuItem(
+                                        text = { Text(text = option) },
+                                        onClick = {
+                                            experience = option
+                                            isExpExpanded = false
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    }
+
                 }
         }
     }
