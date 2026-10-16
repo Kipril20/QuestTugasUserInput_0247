@@ -103,6 +103,8 @@ fun FormBiodataScreen() {
                         color = colorResource(id = R.color.purple_title),
                         textAlign = TextAlign.Center
                     )
+
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_small)))
             }
         }
     }
