@@ -194,6 +194,13 @@ fun FormBiodataScreen() {
                                     color = colorResource(id = R.color.gray_text_hint)
                                 )
                             },
+                            trailingIcon = {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.ic_calendar),
+                                    contentDescription = stringResource(id = R.string.content_desc_calendar),
+                                    tint = colorResource(id = R.color.text_secondary)
+                                )
+                            },
                 }
         }
     }
