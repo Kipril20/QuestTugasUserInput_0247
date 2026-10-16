@@ -177,6 +177,23 @@ fun FormBiodataScreen() {
 
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_medium)))
 
+                    // Row 3: Tgl Lahir & Experience
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(
+                            dimensionResource(id = R.dimen.spacing_medium)
+                        )
+                    ) {
+                        OutlinedTextField(
+                            value = tglLahir,
+                            onValueChange = { tglLahir = it },
+                            placeholder = {
+                                Text(
+                                    text = stringResource(id = R.string.hint_tgl_lahir),
+                                    fontSize = dimensionResource(id = R.dimen.font_size_input).value.sp,
+                                    color = colorResource(id = R.color.gray_text_hint)
+                                )
+                            },
                 }
         }
     }
