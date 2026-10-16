@@ -115,6 +115,13 @@ fun FormBiodataScreen() {
                     )
 
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_extra_large)))
+
+                    // Row 1: Nama Depan & Nama Belakang
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(
+                            dimensionResource(id = R.dimen.spacing_medium)
+                        )
             }
         }
     }
