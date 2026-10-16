@@ -122,6 +122,17 @@ fun FormBiodataScreen() {
                         horizontalArrangement = Arrangement.spacedBy(
                             dimensionResource(id = R.dimen.spacing_medium)
                         )
+                    ) {
+                        OutlinedTextField(
+                            value = namaDepan,
+                            onValueChange = { namaDepan = it },
+                            placeholder = {
+                                Text(
+                                    text = stringResource(id = R.string.hint_nama_depan),
+                                    fontSize = dimensionResource(id = R.dimen.font_size_input).value.sp,
+                                    color = colorResource(id = R.color.gray_text_hint)
+                                )
+                            },
             }
         }
     }
